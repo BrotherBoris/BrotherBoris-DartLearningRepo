@@ -1,27 +1,29 @@
 import "dart:io";
 
 void main() {
-  Pile myPile = new Pile<String>();
+  Stack myStack = new Stack<String>();
 
-  myPile.insertItem("Book 1");
-  myPile.insertItem("Book 2");
-  myPile.insertItem("Book 3");
-  myPile.insertItem("Book 4");
+  myStack.insertItem("Book 1");
+  myStack.insertItem("Book 2");
+  myStack.insertItem("Book 3");
+  myStack.insertItem("Book 4");
 
-  myPile.readItems();
+  myStack.readItems();
   
-  myPile.removeItem();
+  myStack.removeItemAtTop();
 
   print("////////////");
 
-  myPile.insertItem("Book 5");
+  myStack.insertItem("Book 5");
 
-  myPile.readItems();
+  myStack.readItems();
+
+  print(myStack.runtimeType);
 
 }
 
 
-class Pile<T> {
+class Stack<T> {
   List<T> _content = [];
   int _top = 0;
 
@@ -36,7 +38,7 @@ class Pile<T> {
     }
   }
 
-  void removeItem(){
+  void removeItemAtTop(){
     _content.removeAt(_top-1);
     _top--;
   }
