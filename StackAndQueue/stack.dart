@@ -22,7 +22,6 @@ void main() {
 
 }
 
-
 class Stack<T> {
   List<T> _content = [];
   int _top = 0;
@@ -33,19 +32,36 @@ class Stack<T> {
   }
 
   void readItems(){
-    for (var i = _top-1; i >= 0; i--) {
-      print(_content[i]);
+    if(_top > 0){
+      for (var i = _top-1; i >= 0; i--) {
+        print(_content[i]);
+      }
+    }else{
+      print(">The stack is empty");
     }
   }
 
   void removeItemAtTop(){
-    _content.removeAt(_top-1);
-    _top--;
+    if(_top > 0){
+      _content.removeAt(_top-1);
+      _top--;
+    }else{
+      print(">The stack is empty");
+    }
+    
   }
 
   ////GettersSetters////////GettersSetters////
   //int get top => _top;
 
   //List get content => _content;
+
+  /* set top(int newtop) {
+    if (newtop > 0) {
+      _top = newtop;
+    }else{
+      print(error);
+    }
+  } */
   ////GettersSetters////////GettersSetters////
 }
