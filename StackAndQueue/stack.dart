@@ -1,5 +1,3 @@
-import "dart:io";
-
 void main() {
   Stack myStack = new Stack<String>();
 
