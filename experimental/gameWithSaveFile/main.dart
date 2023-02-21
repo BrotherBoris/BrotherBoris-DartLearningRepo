@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'fileManager.dart';
+import 'xmlManager.dart';
 
 void main() {
   // Run the 'cmd /k' command to open a command prompt window
@@ -8,7 +9,7 @@ void main() {
     process.stdout.listen((data) => print(String.fromCharCodes(data)));
     process.stderr.listen((data) => print(String.fromCharCodes(data)));
 
-    FileManager fileManager = FileManager();
+    XMLManager fileManager = XMLManager();
 
     // Run the other Dart program in the new command prompt window
     //process.stdin.writeln('dart experimental/gameWithSaveFile/fileManager.dart a');
