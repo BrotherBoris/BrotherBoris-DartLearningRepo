@@ -33,22 +33,24 @@ class FileManager{
   }
 
 
+
+
+
+
   void checkFiles(){
-  Directory savesDir = Directory("saves");
-  if (!savesDir.existsSync()) {
-    savesDir.createSync();
-  }
+    Directory savesDir = Directory("saves");
+    if (!savesDir.existsSync()) {
+      savesDir.createSync();
+    }
 
-  configFile = File("saves/config.txt");
-  if (!configFile!.existsSync()) {
-    configFile!.createSync();
-  }
+    configFile = File("saves/config.txt");
+    if (!configFile!.existsSync()) {
+      configFile!.createSync();
+    }
 
-  saveFile = File("saves/save.txt");
-  if (!saveFile!.existsSync()) {
-    saveFile!.createSync();
-  }
-
-
+    saveFile = File("saves/save.txt");
+    if (!saveFile!.existsSync()) {
+      saveFile!.createSync();
+    }
   }
 }

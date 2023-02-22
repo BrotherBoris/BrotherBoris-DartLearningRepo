@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:xml/xml.dart';
 
-
-
 class XMLManager{
   static File? configFile;
   static File? saveFile;
@@ -11,15 +9,12 @@ class XMLManager{
     checkFiles();
   }
 
- 
-
-
   void createSaveXMLStructure(){
     var finalStructure = '''
     <World>
       <Actors>
         <Player>
-          <Name>Nameless One</Name>
+          <Name Title="Nameless One"/>
           <Health Max="50" Current="50" />
           <Mana Max="50" Current="50" />
         </Player>
@@ -35,35 +30,34 @@ class XMLManager{
 
   }
 
-  
   void checkFiles(){
     Directory savesDir = Directory("saves");
     if (!savesDir.existsSync()) {
       savesDir.createSync();
     }
 
-    /* configFile = File("saves/config.txt");
-    if (!configFile!.existsSync()) {
-      configFile!.createSync();
-    } */
-
     saveFile = File("saves/save.xml");
     if (!saveFile!.existsSync()) {
       createSaveXMLStructure();
     }
   }
+
+  void readSave(){
+    final file = File('saves/save.xml');
+    final contents = file.readAsStringSync();
+    final document = XmlDocument.parse(contents);
+
+    final nameElement = document.getElement('World')?.getElement('Actors')
+      ?.getElement('Player')?.getElement('Name');
+    final title = nameElement?.getAttribute('Title') ?? '';
+
+    print('Title: $title');
+    
+  }
+
+
+
+
+
+
 }
-
-
-
-/* void main() {
-
-  createStructure();
-
-  /*
-  // Read the XML document and print the person's name
-  final xmlDoc = XmlDocument.parse(file.readAsStringSync());
-  final personNode = xmlDoc.findElements('person').first;
-  final personName = personNode.getAttribute('name');
-  print('Person name: $personName'); */
-} */
